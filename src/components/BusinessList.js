@@ -1,44 +1,27 @@
 import React from 'react';
 
-class BusinessList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      businessList: []
-    };
-  }
+import { connect } from 'react-redux';
 
-  makeApiCall = () => {
-    fetch(`http://localhost:3000/`)
-      .then(response => response.json())
-      // .then(response => console.log(response))
-      .then(
-        (jsonifiedResponse) => {
-          this.setState({
-            isLoaded: true,
-            businessList: jsonifiedResponse
-          });
-        })
-        .catch((error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        });
-  }
+import { makeApiCall } from '../actions';
+
+class BusinessList extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+
+ 
 
   componentDidMount() {
-    this.makeApiCall()
+    const { dispatch } = this.props
+    dispatch(makeApiCall());
   }
 
 
   render() {
-    const { error, isLoaded, businessList } = this.state;
+    const { error, isLoading, businessList } = this.props;
     if (error) {
       return <React.Fragment>Error: {error.message}</React.Fragment>;
-    } else if (!isLoaded) {
+    } else if (isLoading) {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
       return (
@@ -52,6 +35,7 @@ class BusinessList extends React.Component {
                 <p>Website: </p><a href={business.website}>{business.website}</a>
                 <p>{business.phone}</p>
                 <p>{business.address}</p>
+                <hr/>
               </li>
             )}
           </ul>
@@ -61,4 +45,12 @@ class BusinessList extends React.Component {
   }
 }
 
-export default BusinessList;
+const mapStateToProps = state => {
+  return {
+    businessList: state.businessList,
+    isLoading: state.isLoading,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps)(BusinessList);
