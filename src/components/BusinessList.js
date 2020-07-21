@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-
 import { makeApiCall } from '../actions';
 
 class BusinessList extends React.Component {
@@ -24,6 +22,7 @@ class BusinessList extends React.Component {
     } else if (isLoading) {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
+      console.log(this.props)
       return (
         <React.Fragment>
           <h1>This is a business list</h1>
@@ -49,7 +48,8 @@ const mapStateToProps = state => {
   return {
     businessList: state.businessList,
     isLoading: state.isLoading,
-    error: state.error
+    error: state.error,
+    randomBusiness: state.randomBusiness
   }
 }
 
