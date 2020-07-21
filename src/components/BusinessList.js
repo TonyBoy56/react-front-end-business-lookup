@@ -49,7 +49,7 @@ class BusinessList extends React.Component {
               <li key={index}>
                 <h3>{business.name}</h3>
                 <p>{business.business_type}</p>
-                <p>{business.website}</p>
+                <p>Website: </p><a href={business.website}>{business.website}</a>
                 <p>{business.phone}</p>
                 <p>{business.address}</p>
               </li>
@@ -60,7 +60,5 @@ class BusinessList extends React.Component {
     }
   }
 }
-
-
 
 export default BusinessList;
