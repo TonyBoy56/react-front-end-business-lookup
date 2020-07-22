@@ -22,7 +22,7 @@ class BusinessList extends React.Component {
     } else if (isLoading) {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
-      console.log(this.props)
+      // console.log(this.props)
       return (
         <React.Fragment>
           <h1>This is a business list</h1>

@@ -17,7 +17,7 @@ class RandomBusiness extends React.Component {
     } else if (isLoading) {
       return <React.Fragment>Loading...</React.Fragment>;
     } else {
-      console.log(this.props)
+      // console.log(this.props)
       return (
         <React.Fragment>
           <h1>Here's a random business</h1>
