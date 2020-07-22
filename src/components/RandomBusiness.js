@@ -25,7 +25,7 @@ class RandomBusiness extends React.Component {
             <li>
               <h3>{randomBusiness.name}</h3>
               <p>{randomBusiness.business_type}</p>
-              <p>Website: </p><a href={randomBusiness.website}>{randomBusiness.website}</a>
+              <p>Website: <a href={randomBusiness.website}>{randomBusiness.website}</a></p>
               <p>{randomBusiness.phone}</p>
               <p>{randomBusiness.address}</p>
             </li>
@@ -38,10 +38,9 @@ class RandomBusiness extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    randomBusiness: state.randomBusiness,
-    isLoading: state.isLoading,
-    error: state.error,
-    businessList: state.businessList,
+    isLoading: state.randomBusiness.isLoading,
+    error: state.randomBusiness.error,
+    randomBusiness: state.randomBusiness.randomBusiness,
   }
 }
 

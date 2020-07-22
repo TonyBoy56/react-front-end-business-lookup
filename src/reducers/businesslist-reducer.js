@@ -3,7 +3,6 @@ import * as c from './../actions/ActionTypes';
 let initialState = {
   isLoading: false,
   businessList: [],
-  randomBusiness: {},
   error: null
 }
 

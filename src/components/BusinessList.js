@@ -31,7 +31,7 @@ class BusinessList extends React.Component {
               <li key={index}>
                 <h3>{business.name}</h3>
                 <p>{business.business_type}</p>
-                <p>Website: </p><a href={business.website}>{business.website}</a>
+                <p>Website: <a href={business.website}>{business.website}</a></p>
                 <p>{business.phone}</p>
                 <p>{business.address}</p>
                 <hr/>
@@ -46,10 +46,10 @@ class BusinessList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    businessList: state.businessList,
-    isLoading: state.isLoading,
-    error: state.error,
-    randomBusiness: state.randomBusiness
+    isLoading: state.businessList.isLoading,
+    error: state.businessList.error,
+    businessList: state.businessList.businessList,
+    randomBusiness: state.businessList.randomBusiness
   }
 }
 
